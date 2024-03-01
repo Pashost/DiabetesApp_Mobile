@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "694474623036",
+    "firebase_url": "https://diabetes-9731d-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "diabetes-9731d",
+    "storage_bucket": "diabetes-9731d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694474623036:android:3accc8321db0dd11fa9b39",
+        "android_client_info": {
+          "package_name": "com.example.diabetes_app_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBQT9tht5owJ3sRPM0H70DZ-3q_dA60KI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
