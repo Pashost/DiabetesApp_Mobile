@@ -44,11 +44,8 @@ public class DatabaseReaderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initialize FirebaseDatabase and DatabaseReference
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("insulin_values");
-
-        // Load data initially
         loadData();
     }
 
@@ -90,19 +87,14 @@ public class DatabaseReaderFragment extends Fragment {
             }
         });
     }
-
-    // Helper method to format time from snapshot
     private String getTimeStringFromSnapshot(DataSnapshot snapshot) {
         Integer hourInteger = snapshot.child("Hour").getValue(Integer.class);
         Integer minuteInteger = snapshot.child("Minute").getValue(Integer.class);
         Integer secondInteger = snapshot.child("Second").getValue(Integer.class);
 
-        // Check if any of the Integer objects are null
         if (hourInteger == null || minuteInteger == null || secondInteger == null) {
             return ""; // Return an empty string or handle the case as needed
         }
-
-        // Convert the Integer objects to primitive int values
         int hour = hourInteger.intValue();
         int minute = minuteInteger.intValue();
         int second = secondInteger.intValue();

@@ -38,7 +38,7 @@ public class Values_taker extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_values_taker, container, false);
 
         sugarEditText = view.findViewById(R.id.sugarEditText);
@@ -65,7 +65,7 @@ public class Values_taker extends Fragment {
             double xbValue = Double.parseDouble(xbEditText.getText().toString());
 
             if (checkBox.isChecked()) {
-                // Apply some logic here if checkbox is checked
+
             }
 
             double insulinValue = calculateInsulinValue(sugarValue, xbValue);

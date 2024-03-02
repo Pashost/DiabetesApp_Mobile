@@ -15,17 +15,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Find TabLayout and ViewPager2 by their IDs
         tabLayout = findViewById(R.id.tabLayout);
         viewPager2 = findViewById(R.id.viewPager);
 
-        // Create an instance of Pager_adapter
         pagerAdapter = new Pager_adapter(this);
 
-        // Set the adapter to the ViewPager2
         viewPager2.setAdapter(pagerAdapter);
 
-        // Add a TabLayout.OnTabSelectedListener to synchronize TabLayout with ViewPager2
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
