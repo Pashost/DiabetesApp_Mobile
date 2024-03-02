@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Values_Input_menu"
+        android:icon="@drawable/baseline_home_24"
+        android:id="@+id/Values_Input_menu"/>
+    <item android:title="Results"
+        android:icon="@drawable/baseline_ad_units_24"
+        android:id="@+id/Results"/>
+    <item android:title="Settings"
+        android:icon="@drawable/baseline_settings_24"
+        android:id="@+id/Settings"/>
+</menu>
