@@ -2,4 +2,5 @@
 <resources>
     <item name="databaseTextView" type="id" />
     <item name="containerLayout" type="id" />
+    <item name="fragment_settings" type="id" />
 </resources>

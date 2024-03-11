@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.diabetes_app_mobile.fragments.Settings;
 import com.example.diabetes_app_mobile.fragments.DatabaseReaderFragment;
+import com.example.diabetes_app_mobile.fragments.SettingsFragment;
 import com.example.diabetes_app_mobile.fragments.Values_taker;
 
 public class Pager_adapter extends FragmentStateAdapter {
@@ -23,7 +23,7 @@ public class Pager_adapter extends FragmentStateAdapter {
             case 1:
                 return new DatabaseReaderFragment();
             case 2:
-                return new Settings();
+                return new SettingsFragment();
             default:
                 return new Values_taker();
 

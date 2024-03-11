@@ -15,7 +15,7 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-02T00:53:06.636726800Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-03-10T23:51:01.173546200Z" />
           <multipleDevicesSelectedInDropDown value="true" />
           <runningDeviceTargetsSelectedWithDialog>
             <Target>
@@ -24,6 +24,15 @@
                 <Key>
                   <type value="SERIAL_NUMBER" />
                   <value value="342a42af" />
+                </Key>
+              </deviceKey>
+            </Target>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\nikol\.android\avd\Pashost_1.avd" />
                 </Key>
               </deviceKey>
             </Target>
