@@ -32,8 +32,6 @@ public class Values_taker extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Fetch the multiplier value synchronously from Firebase
         DatabaseReference settingsReference = FirebaseDatabase.getInstance().getReference("settings");
         settingsReference.child("textValue").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -68,9 +66,19 @@ public class Values_taker extends Fragment {
             @Override
             public void onClick(View v) {
                 double insulinValue = calculateInsulin();
-                double sugarValue = Double.parseDouble(sugarEditText.getText().toString());
-                double xbValue = Double.parseDouble(xbEditText.getText().toString());
+                double sugarValue;
+                double xbValue;
+                if (sugarEditText.getText().toString().isEmpty()){
+                   sugarValue = 0;
+                }else{
+                    sugarValue = Double.parseDouble(sugarEditText.getText().toString());
+                }
 
+                if (xbEditText.getText().toString().isEmpty()){
+                    xbValue = 0;
+                }else{
+                    xbValue = Double.parseDouble(xbEditText.getText().toString());
+                }
                 Data_saver dataSaver = new Data_saver();
                 dataSaver.saveData(insulinValue, sugarValue, xbValue);
             }

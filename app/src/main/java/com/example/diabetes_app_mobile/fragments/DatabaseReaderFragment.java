@@ -57,19 +57,17 @@ public class DatabaseReaderFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 containerLayout.removeAllViews();
 
-                // Loop through dataSnapshot to get each child
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String time = getTimeStringFromSnapshot(snapshot);
                     String sugarValue = String.valueOf(snapshot.child("SugarValue").getValue());
                     String foodCoefficient = String.valueOf(snapshot.child("FoodCoefficient").getValue());
                     String insulinValue = String.valueOf(snapshot.child("InsulinValue").getValue());
 
-                    // Create a TextView to display the data
                     TextView textView = new TextView(requireContext());
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         textView.setTextAppearance(R.style.TextAppearance_AppCompat_Body1);
                     }
-                    textView.setTextSize(16); // Set text size (sp)
+                    textView.setTextSize(16);
                     textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.black));
                     textView.setPadding(0, 8, 0, 8);
                     textView.setText(String.format(Locale.getDefault(), "%s\nSugarValue: %s\nFood Coefficient: %s\nInsulin Value: %s\n",

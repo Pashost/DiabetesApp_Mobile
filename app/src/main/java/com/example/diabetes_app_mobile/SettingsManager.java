@@ -9,10 +9,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SettingsManager {
     private DatabaseReference databaseReference;
+    public static double multiplier;
 
     public SettingsManager() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("settings");
+        multiplier = getXBMultiplier();
+    }
+
+    private double getXBMultiplier() {
+        return 0;
     }
 
     public void saveText(String text) {
@@ -20,7 +26,10 @@ public class SettingsManager {
     }
 
     public double getXBMultiplier(EditText editText) {
-        String multiplierString = editText.getText().toString();
+        String multiplierString = "1.0";
+        if (editText != null) {
+            multiplierString = editText.getText().toString();
+        }
         try {
             double multiplier = Double.parseDouble(multiplierString);
             return multiplier;
@@ -38,9 +47,9 @@ public class SettingsManager {
                     editText.setText(savedText);
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                // Handle error
             }
         });
     }
