@@ -1,33 +1,31 @@
 package com.example.diabetes_app_mobile;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class InsulinCalculator {
-
-    public static double calculateInsulin(EditText sugarEditText, EditText xbEditText, CheckBox checkBox, Context context) {
+    public static double calculateInsulin(EditText sugarEditText, EditText xbEditText, CheckBox checkBox, double xbMultiplier, Context context) {
         double insulinValue = 0;
-
         try {
             double sugarValue = Double.parseDouble(sugarEditText.getText().toString());
             double existingXBValue = Double.parseDouble(xbEditText.getText().toString());
             double xbValue = existingXBValue;
 
             if (checkBox.isChecked()) {
-                xbValue = calculateXBValue(existingXBValue);
+                xbValue = calculateXBValue(existingXBValue, xbMultiplier);
             }
 
             insulinValue = calculateInsulinValue(sugarValue, xbValue);
-            Toast.makeText(context, "Insulin Value: " + insulinValue, Toast.LENGTH_SHORT).show();
+            showToastOnUIThread(context, "Insulin Value: " + insulinValue);
         } catch (NumberFormatException e) {
-            Toast.makeText(context, "Invalid input. Please enter valid numbers.", Toast.LENGTH_SHORT).show();
+            showToastOnUIThread(context, "Invalid input. Please enter valid numbers.");
         }
 
         return insulinValue;
     }
-
     private static double calculateInsulinValue(double sugar, double xb) {
         if (sugar >= 6) {
             return (sugar - 6) / 2 + xb;
@@ -36,7 +34,18 @@ public class InsulinCalculator {
         }
     }
 
-    private static double calculateXBValue(double existingXB) {
-        return existingXB * SettingsManager.multiplier;
+    private static double calculateXBValue(double existingXB, double multiplier) {
+        return existingXB * multiplier;
+    }
+
+    private static void showToastOnUIThread(final Context context, final String message) {
+        if (context != null) {
+            ((Activity) context).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

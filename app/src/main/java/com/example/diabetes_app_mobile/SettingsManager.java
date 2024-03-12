@@ -1,6 +1,9 @@
 package com.example.diabetes_app_mobile;
 
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,28 +17,36 @@ public class SettingsManager {
     public SettingsManager() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("settings");
-        multiplier = getXBMultiplier();
     }
 
-    private double getXBMultiplier() {
-        return 0;
+    public void initMultiplier(final Callback<Double> callback) {
+        DatabaseReference multiplierRef = databaseReference.child("textValue");
+        multiplierRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String xBMultiplierString = dataSnapshot.getValue(String.class);
+                    xBMultiplierString = xBMultiplierString.replace(",", ".");
+                    try {
+                        multiplier = Double.parseDouble(xBMultiplierString);
+                    } catch (NumberFormatException e) {
+                        multiplier = 0.0;
+                    }
+                } else {
+                    multiplier = 0.0;
+                }
+                callback.onCallback(multiplier);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                multiplier = 0.0;
+                callback.onCallback(multiplier);
+            }
+        });
     }
 
     public void saveText(String text) {
         databaseReference.child("textValue").setValue(text);
-    }
-
-    public double getXBMultiplier(EditText editText) {
-        String multiplierString = "1.0";
-        if (editText != null) {
-            multiplierString = editText.getText().toString();
-        }
-        try {
-            double multiplier = Double.parseDouble(multiplierString);
-            return multiplier;
-        } catch (NumberFormatException e) {
-            return 1.0;
-        }
     }
 
     public void loadText(final EditText editText) {
@@ -52,5 +63,9 @@ public class SettingsManager {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    public interface Callback<T> {
+        void onCallback(T data);
     }
 }

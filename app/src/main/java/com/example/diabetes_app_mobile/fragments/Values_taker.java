@@ -26,7 +26,6 @@ public class Values_taker extends Fragment {
     private double xbMultiplier = 1.0;
 
     public Values_taker() {
-
     }
 
     @Override
@@ -47,6 +46,7 @@ public class Values_taker extends Fragment {
             }
         });
     }
+
 
     @Nullable
     @Override
@@ -88,7 +88,7 @@ public class Values_taker extends Fragment {
     }
 
     public double calculateInsulin() {
-        double insulinValue = InsulinCalculator.calculateInsulin(sugarEditText, xbEditText, checkBox, getContext());
+        double insulinValue = InsulinCalculator.calculateInsulin(sugarEditText, xbEditText, checkBox, xbMultiplier, getContext());
         return insulinValue;
     }
 }

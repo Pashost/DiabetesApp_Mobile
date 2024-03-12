@@ -45,7 +45,4 @@ public class SettingsFragment extends Fragment {
         settingsManager.saveText(text);
     }
 
-    public double getXBMultiplier() {
-        return settingsManager.getXBMultiplier(editText);
-    }
 }
