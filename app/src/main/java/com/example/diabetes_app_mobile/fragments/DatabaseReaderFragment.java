@@ -68,7 +68,7 @@ public class DatabaseReaderFragment extends Fragment {
                         textView.setTextAppearance(R.style.TextAppearance_AppCompat_Body1);
                     }
                     textView.setTextSize(16);
-                    textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.black));
+                    textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
                     textView.setPadding(0, 8, 0, 8);
                     textView.setText(String.format(Locale.getDefault(), "%s\nSugarValue: %s\nFood Coefficient: %s\nInsulin Value: %s\n",
                             time, sugarValue, foodCoefficient, insulinValue));

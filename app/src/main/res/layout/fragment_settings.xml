@@ -1,25 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#101C2C"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter your text here"
-        android:padding="16dp"
+        android:layout_height="59dp"
         android:gravity="top"
+        android:hint="Enter your text here"
         android:inputType="textMultiLine"
-        android:minLines="5" />
+        android:minLines="5"
+        android:padding="16dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:padding="12dp" />
+        android:padding="12dp"
+        android:text="Save"
+        app:backgroundTint="#AE70F4" />
 
 </LinearLayout>
